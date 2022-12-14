@@ -1,0 +1,14 @@
+.target/
+*.jar
+*.war
+*.ear
+.idea/
+
+.settings
+.project
+.classpath
+
+*.properties
+
+# Project exclude paths
+/target/
