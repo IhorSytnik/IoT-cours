@@ -3,7 +3,7 @@ package com.listener;
 import com.entities.Reading;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.repository.PaperRepository;
+import com.repository.Repository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -15,14 +15,13 @@ import static com.ConsumerApplication.QUEUE_NAME;
 @Slf4j
 @EnableRabbit
 @Component
-public class PaperListener {
+public class Listener {
     @Autowired
-    private PaperRepository repository;
+    private Repository repository;
 
     @RabbitListener(queues = QUEUE_NAME)
     public void receive(String message) {
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
-        System.out.println(message);
 
        try {
            Reading reading = gson.fromJson(message, Reading.class);
