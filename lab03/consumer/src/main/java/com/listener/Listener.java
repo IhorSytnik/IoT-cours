@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 import static com.ConsumerApplication.QUEUE_NAME;
 
 @Slf4j
-@EnableRabbit
 @Component
 public class Listener {
     @Autowired
